@@ -101,6 +101,33 @@ end
 
 # Part 3
 
-#class BookInStock
-# YOUR CODE HERE
-#end
+class BookInStock
+  
+  attr_accessor :isbn, :price
+
+  def initialize (isbn, price)
+    unless isbn != ''
+      raise ArgumentError.new('isbn needs to be a string')
+    end
+    @isbn = isbn
+    unless price > 0
+      raise ArgumentError.new('price must be greater than 0.')
+    end
+    @price = price
+  end
+  
+  def price_as_string
+    ret_string = '$' + @price.to_s
+    if ret_string.index('.') == nil
+      ret_string += '.00'
+    elsif ret_string.index('.') != ret_string.length - 3
+      ret_string += '0'
+    end
+    
+    return ret_string
+  end
+  
+  
+  
+ 
+end
